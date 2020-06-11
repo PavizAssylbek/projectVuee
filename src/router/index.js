@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import NotFound from "../views/404.vue";
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,19 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
+    /* children: [
+      {
+        path: '/car',
+        name: 'Car',
+        component: () => import("../views/Car.vue")
+      }
+    ]
+    */
+  },
+  {
+    path: "*",
+    name: "notFound",
+    component: NotFound
   }
 ];
 

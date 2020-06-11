@@ -1,32 +1,36 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          <img class="logo" src="https://vuejs.org/images/logo.png" alt />
+          <ul class="navbar-list">
+            <li class="navbar-item" v-for="link in links" :key="link.title">
+              <router-link class="navbar-link" :title="link.title" :to="link.url">{{ link.title }}</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="wrapper-content wrapper-content--fixed">
+      <div class="container">
+        <router-view />
+      </div>
     </div>
-    <router-view />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style lang="scss"></style>
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+export default {
+  data() {
+    return {
+      links: [
+        { title: "Home", url: "/" },
+        { title: "About", url: "/about" }
+      ]
+    };
   }
-}
-</style>
+};
+</script>
