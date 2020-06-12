@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-content">
           <img class="logo" src="https://vuejs.org/images/logo.png" alt />
-          <form v-if="!searchFlag" @submit.prevent="thisClick">
+          <form v-if="searchFlag" @submit.prevent="thisClick">
             <input
               class="input-search"
               type="text"

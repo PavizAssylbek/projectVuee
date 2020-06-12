@@ -8,8 +8,8 @@
 
       <div class="modal-body" @submit="closeModal">
         <form @submit.prevent="login">
-          <input type="email" v-model="mail" required />
-          <input type="password" v-model="password" required />
+          <input type="email" v-model="mail" placeholder="Just write any email" required />
+          <input type="password" v-model="password" placeholder="Just write any password " required />
           <button class="btn">Log In</button>
         </form>
       </div>

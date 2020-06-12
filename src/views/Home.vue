@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1>Home</h1>
+    <p>Can you login</p>
     <div class="content">
       <PhotoCard v-for="item in getPhotos" :key="item.id" :data="item" />
     </div>
