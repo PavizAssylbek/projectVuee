@@ -2,9 +2,9 @@
   <div class="photoPage">
     <h1>Photo page</h1>
     <div class="content">
-      <img :src="getPhotoStore.urls.full" alt />
-      <p>author: {{getPhotoStore.user.name}}</p>
-      <span>likes: {{getPhotoStore.likes}}</span>
+      <img :src="`${getPhotoStore.urls.full}`" alt />
+      <p>author: {{ getPhotoStore.user.name }}</p>
+      <span>likes: {{ getPhotoStore.likes }}</span>
     </div>
   </div>
 </template>

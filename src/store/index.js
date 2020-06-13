@@ -24,9 +24,6 @@ export default new Vuex.Store({
     fetchFlag(state, payload) {
       state.formFlag = payload;
     },
-    changePhotoStore(state, payload) {
-      state.photoStore = payload;
-    },
     setPhoto(state, data) {
       state.photo = data;
     },

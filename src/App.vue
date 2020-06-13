@@ -23,7 +23,7 @@
     </header>
     <div class="wrapper-content wrapper-content--fixed">
       <div class="container">
-        <modals :show.sync="modalFlag" />
+        <Modal :show.sync="modalFlag" />
         <router-view />
       </div>
     </div>
@@ -53,11 +53,11 @@ form {
 
 
 <script>
-import modals from "@/components/Modal.vue";
+import Modal from "@/components/Modal.vue";
 
 export default {
   components: {
-    modals
+    Modal
   },
   data() {
     return {

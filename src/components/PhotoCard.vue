@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   props: {
@@ -15,9 +15,6 @@ export default {
   },
   computed: {
     ...mapGetters(["getPhotoStore"])
-  },
-  methods: {
-    ...mapMutations(["changePhotoStore"])
   }
 };
 </script>
