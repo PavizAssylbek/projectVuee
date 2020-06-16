@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Like from "../views/Like.vue";
 import PhotoPage from "@/pages/PhotoPage";
 import NotFound from "../views/404.vue";
 
@@ -38,6 +39,11 @@ const routes = [
     path: "/photo/:id",
     name: "PhotoPage",
     component: PhotoPage,
+  },
+  {
+    path: "/like",
+    name: "Like",
+    component: Like,
   },
 ];
 

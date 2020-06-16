@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1 class="title">Home</h1>
     <button @click="changeView" class="btn btnPrimary">Change view</button>
     <div class="home__content" :class="{list: !view}">
       <PhotoCard v-for="item in getPhotos" :key="item.id" :data="item" />

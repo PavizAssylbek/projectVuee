@@ -11,7 +11,6 @@ export default new Vuex.Store({
     data: [],
     mail: "",
     password: "",
-    formFlag: false,
     photo: {},
   },
   mutations: {
@@ -20,9 +19,6 @@ export default new Vuex.Store({
     },
     fetchLogin(state, mail, password) {
       (state.mail = mail), (state.password = password);
-    },
-    fetchFlag(state, payload) {
-      state.formFlag = payload;
     },
     setPhoto(state, data) {
       state.photo = data;
@@ -35,6 +31,7 @@ export default new Vuex.Store({
           `https://api.unsplash.com/search/photos/?client_id=${API_KEY}&per_page=15&orientation=landscape&query=${payload}}`
         );
         const data = await response.json();
+        console.log("getPhotos -> data", data);
         commit("fetchPhotos", data.results);
       } catch (e) {
         console.error(e.message);
@@ -42,9 +39,6 @@ export default new Vuex.Store({
     },
     getLogin({ commit }, mail, password) {
       commit("fetchLogin", mail, password);
-    },
-    changeFlag({ commit }, payload) {
-      commit("fetchFlag", payload);
     },
     async getPhoto({ commit }, id) {
       try {
@@ -60,7 +54,6 @@ export default new Vuex.Store({
   },
   getters: {
     getPhotos: (state) => state.data,
-    search: (state) => state.formFlag,
     getPhotoStore: (state) => state.photo,
   },
   modules: {},
