@@ -2,7 +2,7 @@
   <div class="home">
     <button @click="changeView" class="btn btnPrimary">Change view</button>
     <div class="home__content" :class="{list: !view}">
-      <PhotoCard v-for="item in getPhotos" :key="item.id" :data="item" />
+      <PhotoCard v-for="item in getPhotosGetters" :key="item.id" :data="item" />
     </div>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getPhotos"])
+    ...mapGetters(["getPhotosGetters"])
   },
   methods: {
     changeView() {

@@ -26,16 +26,19 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   props: {
     data: {
       type: Object
+    },
+    click: {
+      type: Function
     }
   },
   computed: {
-    ...mapGetters(["getPhotoStore"])
+    ...mapActions(["getPhoto"])
   }
 };
 </script>

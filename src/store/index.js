@@ -53,7 +53,7 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    getPhotos: (state) => state.data,
+    getPhotosGetters: (state) => state.data,
     getPhotoStore: (state) => state.photo,
   },
   modules: {},
