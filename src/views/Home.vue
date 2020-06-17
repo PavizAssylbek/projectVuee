@@ -1,6 +1,31 @@
 <template>
   <div class="home">
-    <button @click="changeView" class="btn btnPrimary">Change view</button>
+    <button @click="changeView" class="btn">
+      <svg
+        width="23"
+        height="23"
+        viewBox="0 0 23 23"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="10" height="10" :class="{white: view, black: !view}" />
+        <rect y="13" width="10" height="10" :class="{white: view, black: !view}" />
+        <rect x="13" width="10" height="10" :class="{white: view, black: !view}" />
+        <rect x="13" y="13" width="10" height="10" :class="{white: view, black: !view}" />
+      </svg>
+    </button>
+    <button @click="changeView" class="btn">
+      <svg
+        width="23"
+        height="23"
+        viewBox="0 0 23 23"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="23" height="10" :class="{white: !view,black: view}" />
+        <rect y="13" width="23" height="10" :class="{white: !view,black: view}" />
+      </svg>
+    </button>
     <div class="home__content" :class="{list: !view}">
       <PhotoCard v-for="item in getPhotosGetters" :key="item.id" :data="item" />
     </div>
@@ -29,7 +54,6 @@ export default {
   methods: {
     changeView() {
       this.view = !this.view;
-      console.log(this.view);
     }
   }
 };
@@ -51,6 +75,12 @@ export default {
       width: 400px;
       object-fit: cover;
     }
+  }
+  .white {
+    fill: #bdbdbd;
+  }
+  .black {
+    fill: #000000;
   }
 }
 </style>

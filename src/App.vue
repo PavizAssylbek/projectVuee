@@ -4,20 +4,15 @@
       <div class="container">
         <div class="navbar-content">
           <img class="logo" src="https://vuejs.org/images/logo.png" alt />
-          <form @submit.prevent="thisClick">
-            <input
-              class="input-search"
-              type="text"
-              placeholder="what photo are you looking for?"
-              v-model="search"
-            />
-          </form>
           <ul class="navbar-list">
             <li class="navbar-item" v-for="link in links" :key="link.title">
               <router-link class="navbar-link" :title="link.title" :to="link.url">{{ link.title }}</router-link>
             </li>
           </ul>
         </div>
+        <form @submit.prevent="thisClick">
+          <input class="input-search" type="text" placeholder="Поиск" v-model="search" />
+        </form>
       </div>
     </header>
     <div class="wrapper-content wrapper-content--fixed">
@@ -31,8 +26,14 @@
 
 <style lang="scss" scopped>
 .input-search {
+  color: #fff;
+  border: none;
+  background: transparent;
   margin-bottom: 0;
-  height: 25px;
+  font-size: 72px;
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #fff;
 }
 .btn {
   height: 25px;
@@ -44,9 +45,6 @@
     border: 1px solid #494ce8;
     background-color: #494ce8;
   }
-}
-form {
-  width: 25%;
 }
 </style>
 
