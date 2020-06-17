@@ -55,9 +55,6 @@ export default {
     changeView() {
       this.view = !this.view;
     }
-  },
-  mounted() {
-    console.log(this.getPhotoLike);
   }
 };
 </script>

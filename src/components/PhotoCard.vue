@@ -11,7 +11,7 @@
         </figcaption>
       </figure>
       <div class="links">
-        <button href="#" @click.prevent="pushObjectForLike">
+        <button @click.prevent="pushObjectForLike">
           <img src="../assets/tick.svg" alt="#" />
         </button>
         <router-link :to="`/photo/${data.id}`">
@@ -95,6 +95,7 @@ export default {
   }
   .links {
     display: flex;
+    align-items: flex-end;
     &-logo {
       width: 34px;
       height: 34px;
