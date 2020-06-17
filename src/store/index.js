@@ -9,6 +9,7 @@ const API_KEY =
 export default new Vuex.Store({
   state: {
     data: [],
+    likeData: [],
     mail: "",
     password: "",
     photo: {},
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     setPhoto(state, data) {
       state.photo = data;
+    },
+    newLike(state, object) {
+      state.likeData.unshift(object);
     },
   },
   actions: {
@@ -51,9 +55,13 @@ export default new Vuex.Store({
         console.error(e.message);
       }
     },
+    pushForLike({ commit }, object) {
+      commit("newLike", object);
+    },
   },
   getters: {
     getPhotosGetters: (state) => state.data,
+    getPhotoLike: (state) => state.likeData,
     getPhotoStore: (state) => state.photo,
   },
   modules: {},

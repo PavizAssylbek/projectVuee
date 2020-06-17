@@ -12,6 +12,7 @@
         </div>
         <form @submit.prevent="thisClick">
           <input class="input-search" type="text" placeholder="Поиск" v-model="search" />
+          <hr />
         </form>
       </div>
     </header>
@@ -33,7 +34,24 @@
   font-size: 72px;
   padding: 14px;
   text-align: center;
-  border-bottom: 1px solid #fff;
+}
+hr {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 0;
+    width: 100px;
+    height: 2px;
+    background: red;
+    z-index: 5;
+  }
+}
+ul {
+  li {
+    color: #fff;
+  }
 }
 .btn {
   height: 25px;
@@ -50,6 +68,7 @@
 
 
 <script>
+import { mapGetters } from "vuex";
 import Modal from "@/components/Modal.vue";
 
 export default {
@@ -60,13 +79,16 @@ export default {
     return {
       links: [
         { title: "Home", url: "/" },
-        { title: "About", url: "/about" },
-        { title: "Like", url: "/like" }
+        { title: "История поиска", url: "/about" },
+        { title: "Избранное", url: "/like" }
       ],
       search: "",
       formFlag: false,
       modalFlag: false
     };
+  },
+  computed: {
+    ...mapGetters(["getPhotosGetters"])
   },
   methods: {
     thisClick() {

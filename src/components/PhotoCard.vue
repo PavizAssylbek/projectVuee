@@ -11,9 +11,9 @@
         </figcaption>
       </figure>
       <div class="links">
-        <a href="#">
+        <button href="#" @click.prevent="pushObjectForLike">
           <img src="../assets/tick.svg" alt="#" />
-        </a>
+        </button>
         <router-link :to="`/photo/${data.id}`">
           <img src="../assets/loop.svg" alt="#" />
         </router-link>
@@ -37,8 +37,12 @@ export default {
       type: Function
     }
   },
-  computed: {
-    ...mapActions(["getPhoto"])
+  computed: {},
+  methods: {
+    ...mapActions(["getPhoto", "pushForLike"]),
+    pushObjectForLike() {
+      this.pushForLike(this.data);
+    }
   }
 };
 </script>
