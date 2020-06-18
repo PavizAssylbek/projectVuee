@@ -59,5 +59,22 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.like {
+  &__content {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    &.list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .main-photo {
+      height: 267px;
+      width: 400px;
+      object-fit: cover;
+    }
+  }
+}
 </style>

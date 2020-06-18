@@ -1,9 +1,28 @@
 <template>
   <div class="photoPage">
-    <h1>Photo page</h1>
+    <div class="photoPage--header">
+      <div class="left">
+        <img
+          class="left-logo"
+          :src="getPhotoStore.user && getPhotoStore.user.profile_image.small"
+          alt
+        />
+        <div class="left--content">
+          <h6>{{getPhotoStore.user && getPhotoStore.user.name}}</h6>
+          <span>@{{getPhotoStore.user && getPhotoStore.user.instagram_username}}</span>
+        </div>
+      </div>
+      <div class="right">
+        <button>
+          <img src="../assets/like.png" alt="png" />
+        </button>
+        <button class="btn--downloand">
+          <img src="../assets/greendown.png" alt="#" /> Downloand
+        </button>
+      </div>
+    </div>
     <div class="content">
-      <img :src="getPhotoStore.urls && getPhotoStore.urls.full" alt="description" />
-      <p>author: {{ getPhotoStore.user && getPhotoStore.user.name }}</p>
+      <img class="gg-photo" :src="getPhotoStore.urls && getPhotoStore.urls.full" alt="description" />
       <span>likes: {{ getPhotoStore.likes }}</span>
     </div>
     <div class="content">
@@ -38,15 +57,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
-  display: flex;
-  flex-direction: column;
+.photoPage {
+  &--header {
+    display: flex;
+    justify-content: space-between;
 
-  .another-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    .left {
+      display: flex;
+      &-logo {
+        width: 54.42px;
+        height: 54.42px;
+        object-fit: cover;
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+        border-radius: 8px;
+      }
+    }
+    .right {
+      .btn--downloand {
+        color: #fff;
+        width: 206px;
+        background: #219653;
+        padding: 12px;
+        border: 1px solid #219653;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 8px;
+      }
+    }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    .another-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+    }
+    .gg-photo {
+      border-radius: 8px;
+    }
   }
 }
 </style>

@@ -10,7 +10,7 @@
             </li>
           </ul>
         </div>
-        <form @submit.prevent="thisClick">
+        <form @submit.prevent="enterSearch">
           <input class="input-search" type="text" placeholder="Поиск" v-model="search" />
           <hr />
         </form>
@@ -91,8 +91,9 @@ export default {
     ...mapGetters(["getPhotosGetters"])
   },
   methods: {
-    thisClick() {
+    enterSearch() {
       this.$store.dispatch("getPhotos", this.search);
+      this.$store.dispatch("pushHistory", this.search);
       this.search = "";
     }
   }

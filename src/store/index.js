@@ -10,6 +10,7 @@ export default new Vuex.Store({
   state: {
     data: [],
     likeData: [],
+    historySearch: [],
     mail: "",
     password: "",
     photo: {},
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     },
     newLike(state, object) {
       state.likeData.unshift(object);
+    },
+    newHistory(state, payload) {
+      state.historySearch.unshift(payload);
     },
   },
   actions: {
@@ -58,11 +62,15 @@ export default new Vuex.Store({
     pushForLike({ commit }, object) {
       commit("newLike", object);
     },
+    pushHistory({ commit }, payload) {
+      commit("newHistory", payload);
+    },
   },
   getters: {
     getPhotosGetters: (state) => state.data,
     getPhotoLike: (state) => state.likeData,
     getPhotoStore: (state) => state.photo,
+    getHistory: (state) => state.historySearch,
   },
   modules: {},
 });
