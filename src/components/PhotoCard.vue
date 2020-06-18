@@ -59,7 +59,7 @@ export default {
   &:hover {
     box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.5);
     .main-photo {
-      filter: blur(2px);
+      filter: blur(3px) brightness(50%);
     }
     .photo-card--content {
       opacity: 1;

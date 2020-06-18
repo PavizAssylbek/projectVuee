@@ -36,17 +36,15 @@
   text-align: center;
 }
 hr {
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    left: -1px;
-    top: 0;
-    width: 100px;
-    height: 2px;
-    background: red;
-    z-index: 5;
-  }
+  border-bottom: 1px solid;
+
+  border-image: linear-gradient(
+      to left,
+      #000000 0%,
+      rgba(224, 218, 218, 0.747) 50%,
+      #000000 100%
+    )
+    0 0 100% 0/0 0 1px 0 stretch;
 }
 ul {
   li {
