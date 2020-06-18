@@ -13,12 +13,17 @@
         </div>
       </div>
       <div class="right">
-        <button>
+        <button @click.prevent="pushObjectForLike">
           <img src="../assets/like.png" alt="png" />
         </button>
-        <button class="btn--downloand">
+        <a
+          download
+          :href="getPhotoStore.links && getPhotoStore.links.download"
+          class="btn--downloand"
+          target="_blank"
+        >
           <img src="../assets/greendown.png" alt="#" /> Downloand
-        </button>
+        </a>
       </div>
     </div>
     <div class="content">
@@ -43,14 +48,29 @@ export default {
   components: {
     PhotoCard
   },
+  data() {
+    return {
+      photoID: ""
+    };
+  },
   computed: {
     ...mapGetters(["getPhotoStore", "getPhotosGetters"])
   },
+  watch: {
+    $route: "test"
+  },
   methods: {
-    ...mapActions(["getPhoto", "getPhotos"])
+    ...mapActions(["getPhoto", "getPhotos", "pushForLike"]),
+    pushObjectForLike() {
+      this.pushForLike(this.getPhotoStore);
+    },
+    test() {
+      this.photoID = this.$route.params.id;
+      this.getPhoto(this.photoID);
+    }
   },
   async mounted() {
-    await this.getPhoto(this.$route.params.id);
+    // await this.getPhoto(this.$route.params.id);
     await this.getPhotos(this.getPhotoStore.tags[0].title);
   }
 };
@@ -74,7 +94,8 @@ export default {
       }
     }
     .right {
-      .btn--downloand {
+      a.btn--downloand {
+        cursor: pointer;
         color: #fff;
         width: 206px;
         background: #219653;

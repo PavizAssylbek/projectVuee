@@ -54,6 +54,8 @@ export default new Vuex.Store({
           `https://api.unsplash.com/photos/${id}?client_id=${API_KEY}`
         );
         const data = await res.json();
+        console.log(data);
+
         commit("setPhoto", data);
       } catch (e) {
         console.error(e.message);

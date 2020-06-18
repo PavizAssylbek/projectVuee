@@ -11,7 +11,7 @@
         </figcaption>
       </figure>
       <div class="links">
-        <button @click.prevent="pushObjectForLike">
+        <button>
           <img src="../assets/tick.svg" alt="#" />
         </button>
         <router-link :to="`/photo/${data.id}`">
@@ -39,10 +39,7 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapActions(["getPhoto", "pushForLike"]),
-    pushObjectForLike() {
-      this.pushForLike(this.data);
-    }
+    ...mapActions(["getPhoto"])
   }
 };
 </script>
