@@ -71,7 +71,7 @@ export default {
   },
   async mounted() {
     // await this.getPhoto(this.$route.params.id);
-    await this.getPhotos(this.getPhotoStore.tags[0].title);
+    // await this.getPhotos(this.getPhotoStore.tags[0].title);
   }
 };
 </script>
