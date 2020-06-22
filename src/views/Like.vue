@@ -1,5 +1,17 @@
 <template>
   <div class="like">
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          <img class="logo" src="https://vuejs.org/images/logo.png" alt />
+          <ul class="navbar-list">
+            <li class="navbar-item" v-for="link in links" :key="link.title">
+              <router-link class="navbar-link" :title="link.title" :to="link.url">{{ link.title }}</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
     <h1>Like</h1>
     <div class="choise-btns">
       <button @click="changeView" class>
@@ -45,7 +57,12 @@ export default {
   },
   data() {
     return {
-      view: false
+      view: false,
+      links: [
+        { title: "Поиск", url: "/" },
+        { title: "История поиска", url: "/about" },
+        { title: "Избранное", url: "/like" }
+      ]
     };
   },
   computed: {

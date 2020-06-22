@@ -1,5 +1,17 @@
 <template>
   <div class="photoPage">
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          <img class="logo" src="https://vuejs.org/images/logo.png" alt />
+          <ul class="navbar-list">
+            <li class="navbar-item" v-for="link in links" :key="link.title">
+              <router-link class="navbar-link" :title="link.title" :to="link.url">{{ link.title }}</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
     <div class="photoPage--header">
       <div class="left">
         <img
@@ -50,7 +62,12 @@ export default {
   },
   data() {
     return {
-      photoID: ""
+      photoID: "",
+      links: [
+        { title: "Search", url: "/" },
+        { title: "История поиска", url: "/about" },
+        { title: "Избранное", url: "/like" }
+      ]
     };
   },
   computed: {
