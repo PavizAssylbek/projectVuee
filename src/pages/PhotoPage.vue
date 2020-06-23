@@ -95,7 +95,6 @@ export default {
     }
   },
   async mounted() {
-    console.log(this.getPhotoStore.tags);
     // await this.getPhoto(this.$route.params.id);
     // await this.getPhotos(this.getPhotoStore.tags[0].title);
   }

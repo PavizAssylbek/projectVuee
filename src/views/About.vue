@@ -35,9 +35,6 @@ export default {
   },
   computed: {
     ...mapGetters(["getHistory", "getHistory"])
-  },
-  mounted() {
-    console.log(this.getHistory);
   }
 };
 </script>

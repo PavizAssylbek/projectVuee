@@ -39,7 +39,6 @@ export default new Vuex.Store({
           `https://api.unsplash.com/search/photos/?client_id=${API_KEY}&per_page=15&orientation=landscape&query=${payload}}`
         );
         const data = await response.json();
-        console.log("getPhotos -> data", data);
         commit("fetchPhotos", data.results);
       } catch (e) {
         console.error(e.message);
@@ -54,8 +53,6 @@ export default new Vuex.Store({
           `https://api.unsplash.com/photos/${id}?client_id=${API_KEY}`
         );
         const data = await res.json();
-        console.log(data);
-
         commit("setPhoto", data);
       } catch (e) {
         console.error(e.message);
