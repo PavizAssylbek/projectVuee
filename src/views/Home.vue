@@ -19,6 +19,7 @@
         </ul>
       </div>
     </header>
+    <h1>Главная страница</h1>
     <div class="choise-btns">
       <button @click="changeView" class>
         <svg
