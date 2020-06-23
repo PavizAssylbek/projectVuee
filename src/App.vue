@@ -4,6 +4,9 @@
       <Modal :show.sync="modalFlag" />
       <router-view />
     </div>
+    <button class="btn--top" @click.prevent="clickTop">
+      <img src="./assets/button_top.png" alt="#" />
+    </button>
   </div>
 </template>
 
@@ -50,6 +53,11 @@ ul {
     background-color: #494ce8;
   }
 }
+.btn--top {
+  position: fixed;
+  bottom: 30px;
+  right: 5%;
+}
 </style>
 
 
@@ -69,6 +77,12 @@ export default {
   },
   computed: {
     ...mapGetters(["getPhotosGetters"])
+  },
+  methods: {
+    clickTop() {
+      const header = document.querySelector("header");
+      header.scrollIntoView({ behavior: "smooth" });
+    }
   }
 };
 </script>
