@@ -36,9 +36,10 @@ export default new Vuex.Store({
     async getPhotos({ commit }, payload) {
       try {
         const response = await fetch(
-          `https://api.unsplash.com/search/photos/?client_id=${API_KEY}&per_page=15&orientation=landscape&query=${payload}}`
+          `https://api.unsplash.com/search/photos/?client_id=${API_KEY}&per_page=9&orientation=landscape&query=${payload}}`
         );
         const data = await response.json();
+        console.log("getPhotos -> data", data);
         commit("fetchPhotos", data.results);
       } catch (e) {
         console.error(e.message);

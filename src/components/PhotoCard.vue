@@ -1,6 +1,11 @@
 <template>
   <div class="photo-card">
-    <img class="main-photo" :src="data.urls.small" :alt="data.alt_description" />
+    <img
+      sizes="(min-width: 1335px) 416px, (min-width: 992px) calc(calc(100vw - 72px) / 3), (min-width: 768px) calc(calc(100vw - 48px) / 2), 100vw"
+      class="main-photo"
+      :src="data.urls.raw"
+      :alt="data.alt_description"
+    />
     <div class="photo-card--content">
       <figure>
         <img :src="data.user.profile_image.small" alt />
@@ -67,6 +72,8 @@ export default {
     }
   }
   .main-photo {
+    position: absolute;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;

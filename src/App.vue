@@ -19,6 +19,7 @@
   font-size: 72px;
   padding: 14px;
   text-align: center;
+  text-transform: capitalize;
 }
 hr {
   border-bottom: 1px solid;
@@ -54,6 +55,9 @@ ul {
   }
 }
 .btn--top {
+  padding: 0;
+  width: 50px;
+  height: 50px;
   position: fixed;
   bottom: 30px;
   right: 5%;

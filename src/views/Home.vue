@@ -19,37 +19,39 @@
         </ul>
       </div>
     </header>
-    <h1>Главная страница</h1>
-    <div class="choise-btns">
-      <button @click="changeView" class>
-        <svg
-          width="23"
-          height="23"
-          viewBox="0 0 23 23"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="10" height="10" :class="{white: view, black: !view}" />
-          <rect y="13" width="10" height="10" :class="{white: view, black: !view}" />
-          <rect x="13" width="10" height="10" :class="{white: view, black: !view}" />
-          <rect x="13" y="13" width="10" height="10" :class="{white: view, black: !view}" />
-        </svg>
-      </button>
-      <button @click="changeView" class>
-        <svg
-          width="23"
-          height="23"
-          viewBox="0 0 23 23"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="23" height="10" :class="{white: !view,black: view}" />
-          <rect y="13" width="23" height="10" :class="{white: !view,black: view}" />
-        </svg>
-      </button>
-    </div>
-    <div class="home__content" :class="{list: !view}">
-      <PhotoCard v-for="item in getPhotosGetters" :key="item.id" :data="item" />
+    <div class="container">
+      <h1>Главная страница</h1>
+      <div class="choise-btns">
+        <button @click="changeView" class>
+          <svg
+            width="23"
+            height="23"
+            viewBox="0 0 23 23"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="10" height="10" :class="{white: view, black: !view}" />
+            <rect y="13" width="10" height="10" :class="{white: view, black: !view}" />
+            <rect x="13" width="10" height="10" :class="{white: view, black: !view}" />
+            <rect x="13" y="13" width="10" height="10" :class="{white: view, black: !view}" />
+          </svg>
+        </button>
+        <button @click="changeView" class>
+          <svg
+            width="23"
+            height="23"
+            viewBox="0 0 23 23"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="23" height="10" :class="{white: !view,black: view}" />
+            <rect y="13" width="23" height="10" :class="{white: !view,black: view}" />
+          </svg>
+        </button>
+      </div>
+      <div class="home__content" :class="{list: !view}">
+        <PhotoCard v-for="item in getPhotosGetters" :key="item.id" :data="item" />
+      </div>
     </div>
   </div>
 </template>
@@ -100,12 +102,7 @@ export default {
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     &.list {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .main-photo {
-      height: 267px;
-      width: 400px;
-      object-fit: cover;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }
