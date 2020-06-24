@@ -74,6 +74,11 @@ export default {
     changeView() {
       this.view = !this.view;
     }
+  },
+  mounted() {
+    console.log("ready");
+    const firstArr = this.getPhotoLike.slice(0, this.getPhotoLike.length / 3);
+    console.log("mounted -> firstArr", firstArr);
   }
 };
 </script>

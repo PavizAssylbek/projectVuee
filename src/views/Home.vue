@@ -89,6 +89,14 @@ export default {
       this.$store.dispatch("pushHistory", this.search);
       this.search = "";
     }
+  },
+  mounted() {
+    console.log("ready");
+    const firstArr = this.getPhotosGetters.slice(
+      0,
+      this.getPhotosGetters.length / 3
+    );
+    console.log("mounted -> firstArr", firstArr);
   }
 };
 </script>
