@@ -60,7 +60,7 @@
 // @ is an alias to /src
 
 import PhotoCard from "@/components/PhotoCard";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Home",
@@ -78,9 +78,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getPhotosGetters", "getHistory"])
+    ...mapGetters(["getPhotosGetters", "getHistory", "getMySearchGetters"])
   },
   methods: {
+    ...mapActions(["MySearchActions"]),
     changeView() {
       this.view = !this.view;
     },
@@ -88,6 +89,7 @@ export default {
       this.$store.dispatch("getPhotos", {
         search: this.search
       });
+      this.MySearchActions(this.search);
       this.$store.dispatch("pushHistory", this.search);
       this.search = "";
     }
@@ -103,9 +105,6 @@ export default {
     column-count: 3;
     column-gap: 20px;
     column-width: 33.33333333333333%;
-    // grid-template-columns: repeat(3, 1fr);
-    // grid-column-gap: 20px;
-    // grid-row-gap: 20px;
     &.list {
       column-count: 1;
     }

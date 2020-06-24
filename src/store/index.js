@@ -11,10 +11,14 @@ export default new Vuex.Store({
     likeData: [],
     historySearch: [],
     photo: {},
+    search: "",
+    page: 1,
   },
   mutations: {
     fetchPhotos(state, data) {
-      state.data = data;
+      console.log(data);
+
+      state.data = [...state.data, ...data];
     },
     fetchLogin(state, mail, password) {
       (state.mail = mail), (state.password = password);
@@ -28,15 +32,20 @@ export default new Vuex.Store({
     newHistory(state, payload) {
       state.historySearch.unshift(payload);
     },
+    upPage(state, payload) {
+      state.page = payload;
+    },
+    MySearchMutations(state, payload) {
+      state.search = payload;
+    },
   },
   actions: {
     async getPhotos({ commit }, { search }) {
       try {
         const response = await fetch(
-          `https://api.unsplash.com/search/?client_id=i_zzFN2ObiV515beVlFT2zSqgPNUnS2nL9UZD9SqHj4&page=9&per_page=9&query=${search}`
+          `https://api.unsplash.com/search/?client_id=i_zzFN2ObiV515beVlFT2zSqgPNUnS2nL9UZD9SqHj4&page=${this.state.page}&per_page=9&query=${search}`
         );
         const data = await response.json();
-        debugger;
         commit("fetchPhotos", data.photos.results);
       } catch (e) {
         console.error(e.message);
@@ -60,12 +69,20 @@ export default new Vuex.Store({
     pushHistory({ commit }, payload) {
       commit("newHistory", payload);
     },
+    MySearchActions({ commit }, payload) {
+      commit("MySearchMutations", payload);
+    },
+    pageUp({ commit }, payload) {
+      commit("upPage", payload);
+    },
   },
   getters: {
     getPhotosGetters: (state) => state.data,
     getPhotoLike: (state) => state.likeData,
     getPhotoStore: (state) => state.photo,
     getHistory: (state) => state.historySearch,
+    getPage: (state) => state.page,
+    getMySearchGetters: (state) => state.search,
   },
   modules: {},
 });

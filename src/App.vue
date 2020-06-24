@@ -4,6 +4,7 @@
       <Modal :show.sync="modalFlag" />
       <router-view />
     </div>
+    <div class="checkscroll"></div>
     <button class="btn--top" @click.prevent="clickTop">
       <img src="./assets/button_top.png" alt="#" />
     </button>
@@ -36,6 +37,11 @@ ul {
   li {
     color: #fff;
   }
+}
+.checkscroll {
+  width: 100%;
+  height: 2px;
+  background: red;
 }
 .list-history {
   display: flex;
@@ -76,18 +82,33 @@ export default {
   data() {
     return {
       formFlag: false,
-      modalFlag: false
+      modalFlag: false,
+      number: 1
     };
   },
   computed: {
-    ...mapGetters(["getPhotosGetters"])
+    ...mapGetters(["getPhotosGetters", "getMySearchGetters"])
   },
   methods: {
-    ...mapActions(["getPhotos"]),
+    ...mapActions(["getPhotos", "pageUp"]),
     clickTop() {
       const header = document.querySelector("header");
       header.scrollIntoView({ behavior: "smooth" });
     }
+  },
+  mounted() {
+    const checkScroll = document.querySelector(".checkscroll");
+    const observer = new IntersectionObserver(entries => {
+      const scroll = entries[0];
+      if (scroll.isIntersecting) {
+        console.log("Fuck you man!");
+        this.number++;
+        this.pageUp(this.number);
+        this.getPhotos(this.getMySearchGetters);
+      }
+    });
+
+    observer.observe(checkScroll);
   }
 };
 </script>
