@@ -36,6 +36,7 @@ hr {
 ul {
   li {
     color: #fff;
+    text-transform: capitalize;
   }
 }
 .checkscroll {
@@ -101,7 +102,6 @@ export default {
     const observer = new IntersectionObserver(entries => {
       const scroll = entries[0];
       if (scroll.isIntersecting) {
-        console.log("Fuck you man!");
         this.number++;
         this.pageUp(this.number);
         this.getPhotos(this.getMySearchGetters);

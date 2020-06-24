@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import _ from "lodash";
 
 Vue.use(Vuex);
 
@@ -16,9 +17,8 @@ export default new Vuex.Store({
   },
   mutations: {
     fetchPhotos(state, data) {
-      console.log(data);
-
-      state.data = [...state.data, ...data];
+      const newArr = _.uniqBy([...state.data, ...data], "id");
+      state.data = newArr;
     },
     fetchLogin(state, mail, password) {
       (state.mail = mail), (state.password = password);
@@ -40,12 +40,13 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async getPhotos({ commit }, { search }) {
+    async getPhotos({ commit }, search) {
       try {
         const response = await fetch(
           `https://api.unsplash.com/search/?client_id=i_zzFN2ObiV515beVlFT2zSqgPNUnS2nL9UZD9SqHj4&page=${this.state.page}&per_page=9&query=${search}`
         );
         const data = await response.json();
+        debugger;
         commit("fetchPhotos", data.photos.results);
       } catch (e) {
         console.error(e.message);

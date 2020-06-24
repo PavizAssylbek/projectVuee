@@ -86,9 +86,7 @@ export default {
       this.view = !this.view;
     },
     enterSearch() {
-      this.$store.dispatch("getPhotos", {
-        search: this.search
-      });
+      this.$store.dispatch("getPhotos", this.search);
       this.MySearchActions(this.search);
       this.$store.dispatch("pushHistory", this.search);
       this.search = "";

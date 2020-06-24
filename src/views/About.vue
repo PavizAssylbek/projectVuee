@@ -12,10 +12,12 @@
         </div>
       </div>
     </header>
-    <h1>History my search</h1>
-    <ul>
-      <li v-for="item in getHistory" :key="item.id">{{item}}</li>
-    </ul>
+    <div class="container">
+      <h1>History my search</h1>
+      <ul>
+        <li v-for="item in getHistory" :key="item.id">{{item}}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -43,6 +45,7 @@ export default {
 ul {
   li {
     color: #000;
+    text-transform: capitalize;
   }
 }
 </style>

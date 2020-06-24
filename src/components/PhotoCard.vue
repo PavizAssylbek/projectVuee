@@ -1,9 +1,9 @@
 <template>
   <div class="photo-card">
-    <img class="main-photo" :src="data.urls.raw" :alt="data.alt_description" />
+    <img class="main-photo" :src="data.urls.small" :alt="data.alt_description" />
     <div class="photo-card--content">
       <figure>
-        <img :src="data.user.profile_image.small" alt />
+        <img :src="data.user.profile_image.thumb" alt />
         <figcaption>
           {{data.user.name}}
           <br />
