@@ -15,7 +15,9 @@
     <div class="container">
       <h1>History my search</h1>
       <ul>
-        <li v-for="item in getHistory" :key="item.id">{{item}}</li>
+        <li v-for="item in getHistory" :key="item.id">
+          <button>{{item}}</button>
+        </li>
       </ul>
     </div>
   </div>
@@ -47,5 +49,8 @@ ul {
     color: #000;
     text-transform: capitalize;
   }
+}
+button {
+  text-transform: capitalize;
 }
 </style>
