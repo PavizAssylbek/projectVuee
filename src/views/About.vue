@@ -15,19 +15,26 @@
     <div class="container">
       <h1>History my search</h1>
       <ul>
-        <li v-for="item in getHistory" :key="item.id">
-          <button>{{item}}</button>
-        </li>
+        <History v-for="item in getHistory" :key="item.id" :data="item" />
       </ul>
+      <div class="home__content">
+        <PhotoCard v-for="item in getHistoryStoreGetters" :key="item.id" :data="item" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import History from "@/components/History";
+import PhotoCard from "@/components/PhotoCard";
 import { mapGetters } from "vuex";
 
 export default {
   name: "About",
+  components: {
+    History,
+    PhotoCard
+  },
   data() {
     return {
       links: [
@@ -38,7 +45,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getHistory", "getHistory"])
+    ...mapGetters(["getHistory", "getHistoryStoreGetters"])
   }
 };
 </script>

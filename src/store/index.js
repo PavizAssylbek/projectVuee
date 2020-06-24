@@ -11,6 +11,7 @@ export default new Vuex.Store({
     data: [],
     likeData: [],
     historySearch: [],
+    historyStore: [],
     photo: {},
     search: "",
     page: 1,
@@ -19,6 +20,10 @@ export default new Vuex.Store({
     fetchPhotos(state, data) {
       const newArr = _.uniqBy([...state.data, ...data], "id");
       state.data = newArr;
+    },
+    fetchHistory(state, data) {
+      const newArr = _.uniqBy([...state.data, ...data], "id");
+      state.historyStore = newArr;
     },
     fetchLogin(state, mail, password) {
       (state.mail = mail), (state.password = password);
@@ -46,8 +51,18 @@ export default new Vuex.Store({
           `https://api.unsplash.com/search/?client_id=i_zzFN2ObiV515beVlFT2zSqgPNUnS2nL9UZD9SqHj4&page=${this.state.page}&per_page=9&query=${search}`
         );
         const data = await response.json();
-        debugger;
         commit("fetchPhotos", data.photos.results);
+      } catch (e) {
+        console.error(e.message);
+      }
+    },
+    async getHistoryActions({ commit }, search) {
+      try {
+        const response = await fetch(
+          `https://api.unsplash.com/search/?client_id=i_zzFN2ObiV515beVlFT2zSqgPNUnS2nL9UZD9SqHj4&page=${this.state.page}&per_page=9&query=${search}`
+        );
+        const data = await response.json();
+        commit("fetchHistory", data.photos.results);
       } catch (e) {
         console.error(e.message);
       }
@@ -84,6 +99,7 @@ export default new Vuex.Store({
     getHistory: (state) => state.historySearch,
     getPage: (state) => state.page,
     getMySearchGetters: (state) => state.search,
+    getHistoryStoreGetters: state => state.historyStore
   },
   modules: {},
 });
