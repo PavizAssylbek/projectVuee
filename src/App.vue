@@ -66,7 +66,7 @@ ul {
 
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import Modal from "@/components/Modal.vue";
 
 export default {
@@ -83,6 +83,7 @@ export default {
     ...mapGetters(["getPhotosGetters"])
   },
   methods: {
+    ...mapActions(["getPhotos"]),
     clickTop() {
       const header = document.querySelector("header");
       header.scrollIntoView({ behavior: "smooth" });

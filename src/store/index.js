@@ -10,8 +10,6 @@ export default new Vuex.Store({
     data: [],
     likeData: [],
     historySearch: [],
-    mail: "",
-    password: "",
     photo: {},
   },
   mutations: {
@@ -32,25 +30,21 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async getPhotos({ commit }, payload) {
+    async getPhotos({ commit }, { search }) {
       try {
         const response = await fetch(
-          `https://api.unsplash.com/search/?client_id=i_zzFN2ObiV515beVlFT2zSqgPNUnS2nL9UZD9SqHj4&page=9&per_page=9&query=${payload}`
+          `https://api.unsplash.com/search/?client_id=i_zzFN2ObiV515beVlFT2zSqgPNUnS2nL9UZD9SqHj4&page=9&per_page=9&query=${search}`
         );
         const data = await response.json();
-        console.log("getPhotos -> data", data);
+        debugger;
         commit("fetchPhotos", data.photos.results);
       } catch (e) {
         console.error(e.message);
       }
     },
-    getLogin({ commit }, mail, password) {
-      commit("fetchLogin", mail, password);
-    },
     async getPhoto({ commit }, id) {
       try {
         const res = await fetch(
-          // `https://api.unsplash.com/photos/${id}?client_id=${API_KEY}`
           `https://api.unsplash.com/photos/${id}?client_id=i_zzFN2ObiV515beVlFT2zSqgPNUnS2nL9UZD9SqHj4`
         );
         const data = await res.json();
