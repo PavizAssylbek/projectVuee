@@ -49,7 +49,7 @@
           </svg>
         </button>
       </div>
-      <div class="home__content" :class="{list: !view}">
+      <div class="home__content" :class="{list: view}">
         <PhotoCard v-for="item in getPhotosGetters" :key="item.id" :data="item" />
       </div>
     </div>
@@ -97,12 +97,15 @@ export default {
 .home {
   &__content {
     margin-top: 80px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    min-height: 90vh;
+    column-count: 3;
+    column-gap: 20px;
+    column-width: 33.33333333333333%;
+    // grid-template-columns: repeat(3, 1fr);
+    // grid-column-gap: 20px;
+    // grid-row-gap: 20px;
     &.list {
-      grid-template-columns: repeat(3, 1fr);
+      column-count: 1;
     }
   }
 }

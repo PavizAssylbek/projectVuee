@@ -50,10 +50,12 @@
         </div>
       </div>
     </div>
-    <div class="content">
-      <h2>Похожие фотографий</h2>
-      <div class="another-content">
-        <PhotoCard v-for="item in getPhotosGetters" :key="item.id" :data="item" />
+    <div class="container">
+      <div class>
+        <h2>Похожие фотографий</h2>
+        <div class="home__content">
+          <PhotoCard v-for="item in getPhotosGetters" :key="item.id" :data="item" />
+        </div>
       </div>
     </div>
   </div>
@@ -95,8 +97,8 @@ export default {
     }
   },
   async mounted() {
-    // await this.getPhoto(this.$route.params.id);
-    // await this.getPhotos(this.getPhotoStore.tags[0].title);
+    await this.getPhoto(this.$route.params.id);
+    await this.getPhotos(this.getPhotoStore.tags[0].title);
   }
 };
 </script>
@@ -131,7 +133,15 @@ export default {
       }
     }
     .right {
+      display: flex;
+      align-items: center;
+      button {
+        padding: 0;
+        height: 55px;
+      }
       a.btn--downloand {
+        display: flex;
+        justify-content: space-around;
         cursor: pointer;
         color: #fff;
         width: 206px;
@@ -167,12 +177,6 @@ export default {
     flex-direction: column;
     height: 100vh;
 
-    .another-content {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-column-gap: 20px;
-      grid-row-gap: 20px;
-    }
     .gg-photo {
       width: 100%;
       height: 100%;

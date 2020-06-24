@@ -1,11 +1,6 @@
 <template>
   <div class="photo-card">
-    <img
-      sizes="(min-width: 1335px) 416px, (min-width: 992px) calc(calc(100vw - 72px) / 3), (min-width: 768px) calc(calc(100vw - 48px) / 2), 100vw"
-      class="main-photo"
-      :src="data.urls.raw"
-      :alt="data.alt_description"
-    />
+    <img class="main-photo" :src="data.urls.raw" :alt="data.alt_description" />
     <div class="photo-card--content">
       <figure>
         <img :src="data.user.profile_image.small" alt />
@@ -55,12 +50,9 @@ export default {
 <style lang="scss">
 .photo-card {
   position: relative;
-  width: 400px;
-  height: 250px;
-  border-radius: 5px;
-  overflow: hidden;
   cursor: pointer;
   transition: 0.3s;
+  margin-bottom: 15px;
   &:hover {
     box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.5);
     .main-photo {
@@ -72,11 +64,8 @@ export default {
     }
   }
   .main-photo {
-    position: absolute;
-    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     transition: 0.3s;
   }
   figure {
