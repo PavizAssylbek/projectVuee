@@ -106,6 +106,9 @@ export default {
       this.$store.dispatch("pushHistory", this.search);
       this.search = "";
     }
+  },
+  beforeMount() {
+    this.$store.dispatch("getPhotos", "random");
   }
 };
 </script>
