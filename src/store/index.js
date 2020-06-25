@@ -99,7 +99,7 @@ export default new Vuex.Store({
     getHistory: (state) => state.historySearch,
     getPage: (state) => state.page,
     getMySearchGetters: (state) => state.search,
-    getHistoryStoreGetters: state => state.historyStore
+    getHistoryStoreGetters: (state) => state.historyStore,
   },
   modules: {},
 });

@@ -37,6 +37,55 @@ ul {
   li {
     color: #fff;
     text-transform: capitalize;
+
+    a.history {
+      position: relative;
+      &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: -30px;
+        width: 25px;
+        height: 25px;
+        background-image: url("assets/store.png");
+        background-repeat: no-repeat;
+        @media (max-width: 480px) {
+          top: -14px;
+        }
+      }
+    }
+    a.like {
+      position: relative;
+      &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: -30px;
+        width: 25px;
+        height: 25px;
+        background-image: url("assets/top_like.png");
+        background-repeat: no-repeat;
+        @media (max-width: 480px) {
+          top: -12px;
+        }
+      }
+    }
+    a.search {
+      position: relative;
+      &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: -30px;
+        width: 25px;
+        height: 25px;
+        background-image: url("assets/loop.png");
+        background-repeat: no-repeat;
+        @media (max-width: 480px) {
+          top: -15px;
+        }
+      }
+    }
   }
 }
 .checkscroll {
@@ -62,6 +111,7 @@ ul {
   }
 }
 .btn--top {
+  z-index: 10;
   padding: 0;
   width: 50px;
   height: 50px;
